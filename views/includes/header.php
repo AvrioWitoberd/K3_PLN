@@ -28,6 +28,7 @@ $base_path = isset($base_path) ? $base_path : '';
                     <li><a href="<?= $base_path ?>profil.php" class="nav__link <?= ($current_page == 'profil.php') ? 'active' : '' ?>">Profil & Regulasi</a></li>
                     <li><a href="<?= $base_path ?>identifikasi.php" class="nav__link <?= ($current_page == 'identifikasi.php') ? 'active' : '' ?>">Identifikasi Bahaya</a></li>
                     <li><a href="<?= $base_path ?>safety-map.php" class="nav__link <?= ($current_page == 'safety-map.php') ? 'active' : '' ?>">Peta & Rambu</a></li>
+                    <li><a href="<?= $base_path ?>artikel.php" class="nav__link <?= ($current_page == 'artikel.php' || $current_page == 'detail-artikel.php') ? 'active' : '' ?>">Edukasi K3</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" aria-label="Toggle Menu">

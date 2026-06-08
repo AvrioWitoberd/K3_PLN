@@ -22,6 +22,21 @@ class ArtikelModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getPublished() {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE status = 'published' ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getBySlug($slug) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE slug = :slug AND status = 'published' LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create($data) {
         $query = "INSERT INTO " . $this->table_name . " 
                   (judul, slug, konten, gambar_cover, status, created_by) 

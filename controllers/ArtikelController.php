@@ -15,6 +15,14 @@ class ArtikelController {
         return $this->model->getAll();
     }
 
+    public function getPublished() {
+        return $this->model->getPublished();
+    }
+
+    public function getBySlug($slug) {
+        return $this->model->getBySlug($slug);
+    }
+
     public function store($data) {
         // Implementasi slug otomatis & sanitasi harus dipanggil di sini nantinya
         return $this->model->create($data);
