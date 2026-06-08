@@ -19,6 +19,11 @@
                     <i class="ri-fire-line"></i> <span>Matriks Risiko</span>
                 </a>
             </li>
+            <li>
+                <a href="<?= $base_path ?>admin/artikel.php" class="sidebar-link <?= ($current_page == 'artikel.php') ? 'active' : '' ?>">
+                    <i class="ri-article-line"></i> <span>Artikel Edukasi</span>
+                </a>
+            </li>
         </ul>
 
         <div class="nav-section-title mt-4">KONTEN SISTEM</div>
