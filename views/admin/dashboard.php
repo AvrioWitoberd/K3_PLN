@@ -5,7 +5,37 @@
         <h1 class="h3 font-weight-bold text-dark m-0">Ringkasan Eksekutif K3</h1>
         <p class="text-muted mt-1">Sistem Pemantauan Terpadu PLN</p>
     </div>
-    <span class="badge badge--soft badge--info px-3 py-2 fs-7 m-0"><i class="ri-calendar-line"></i> <?= date('d F Y') ?></span>
+    <div class="dashboard-clock d-flex align-items-center gap-3 flex-shrink-0">
+        <div class="dashboard-clock__date d-flex align-items-center gap-2 badge badge--soft badge--info px-3 py-2 fs-7 m-0">
+            <i class="ri-calendar-line"></i>
+            <span id="liveDateText">Memuat...</span>
+        </div>
+        <div class="dashboard-clock__time d-flex align-items-center gap-2 badge badge--soft badge--primary px-3 py-2 fs-7 m-0" style="font-variant-numeric: tabular-nums;">
+            <i class="ri-time-line"></i>
+            <span id="liveTimeText">--:--:--</span>
+            <span style="font-size:0.7rem; opacity:0.7;">WIB</span>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        const hariIndo = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+        const bulanIndo = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        const elDate = document.getElementById('liveDateText');
+        const elTime = document.getElementById('liveTimeText');
+
+        function pad(n) { return n < 10 ? '0' + n : n; }
+
+        function updateClock() {
+            const now = new Date();
+            elDate.textContent = hariIndo[now.getDay()] + ', ' + now.getDate() + ' ' + bulanIndo[now.getMonth()] + ' ' + now.getFullYear();
+            elTime.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    })();
+    </script>
 </div>
 
 <?php
@@ -15,9 +45,9 @@ $status_text = $total_tinggi > 0 ? 'Perlu Pemantauan' : 'Terkendali';
 ?>
 <!-- Ringkasan Eksekutif Panel -->
 <!-- Ringkasan Eksekutif Panel -->
-<div class="card border-0 shadow-sm rounded-lg mb-4" style="background-color: <?= $total_tinggi > 0 ? '#fef2f2' : '#f0fdf4' ?>; position: relative; overflow: hidden;">
-    <div style="position: absolute; left: 0; top: 0; width: 6px; height: 100%; background-color: <?= $total_tinggi > 0 ? '#ef4444' : '#10b981' ?>;"></div>
-    <div class="card__body p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3" style="padding-left: 1.5rem !important;">
+<div class="card border-0 shadow-soft rounded-xl mb-5 executive-summary-card" style="background-color: <?= $total_tinggi > 0 ? '#fef2f2' : '#f0fdf4' ?>; position: relative; overflow: hidden; transform: translateY(0); transition: all 0.3s ease;">
+    <div style="position: absolute; left: 0; top: 0; width: 8px; height: 100%; background-color: <?= $total_tinggi > 0 ? '#ef4444' : '#10b981' ?>;"></div>
+    <div class="card__body p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4" style="padding-left: 2rem !important; padding-right: 2rem !important;">
         <div>
             <h5 class="font-weight-bold m-0 mb-2">Status Keselamatan: <span class="<?= $total_tinggi > 0 ? 'text-danger' : 'text-success' ?>"><?= $status_text ?></span></h5>
             <p class="text-muted m-0 fs-6" style="line-height: 1.6;">
@@ -34,41 +64,36 @@ $status_text = $total_tinggi > 0 ? 'Perlu Pemantauan' : 'Terkendali';
 </div>
 
 <!-- 4 Stats Cards -->
-<div class="row mb-5">
-    <div class="col-md-3 mb-3">
-        <div class="stat-card h-100" style="margin: 0;">
-            <div class="stat-card__icon text-primary" style="background: #eff6ff;"><i class="ri-global-line"></i></div>
-            <div>
-                <div class="stat-card__number"><?= htmlspecialchars($total_risiko) ?></div>
-                <div class="stat-card__label">Total Risiko</div>
-            </div>
+<div class="dashboard-stats-grid mb-5">
+    <div class="stat-card h-100 shadow-sm border-0 bg-white" style="margin: 0; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; border-radius: var(--radius-lg); transition: all 0.3s;">
+        <div class="stat-card__icon text-primary rounded-lg flex-shrink-0 d-flex justify-content-center align-items-center" style="background: #eff6ff; width: 60px; height: 60px; font-size: 2rem;"><i class="ri-global-line"></i></div>
+        <div>
+            <div class="stat-card__number" style="font-size: 1.8rem; font-weight: 800; line-height: 1.2; color: #0f172a;"><?= htmlspecialchars($total_risiko) ?></div>
+            <div class="stat-card__label" style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Total Risiko</div>
         </div>
     </div>
-    <div class="col-md-3 mb-3">
-        <div class="stat-card h-100" style="margin: 0;">
-            <div class="stat-card__icon text-danger" style="background: #fef2f2;"><i class="ri-fire-fill"></i></div>
-            <div>
-                <div class="stat-card__number"><?= htmlspecialchars($total_tinggi) ?></div>
-                <div class="stat-card__label">Risiko Tinggi</div>
-            </div>
+    
+    <div class="stat-card h-100 shadow-sm border-0 bg-white" style="margin: 0; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; border-radius: var(--radius-lg); transition: all 0.3s;">
+        <div class="stat-card__icon text-danger rounded-lg flex-shrink-0 d-flex justify-content-center align-items-center" style="background: #fef2f2; width: 60px; height: 60px; font-size: 2rem;"><i class="ri-fire-fill"></i></div>
+        <div>
+            <div class="stat-card__number" style="font-size: 1.8rem; font-weight: 800; line-height: 1.2; color: #0f172a;"><?= htmlspecialchars($total_tinggi) ?></div>
+            <div class="stat-card__label" style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Risiko Tinggi</div>
         </div>
     </div>
-    <div class="col-md-3 mb-3">
-        <div class="stat-card h-100" style="margin: 0;">
-            <div class="stat-card__icon text-warning" style="background: #fffbeb;"><i class="ri-alarm-warning-fill"></i></div>
-            <div>
-                <div class="stat-card__number"><?= htmlspecialchars($total_sedang) ?></div>
-                <div class="stat-card__label">Risiko Sedang</div>
-            </div>
+    
+    <div class="stat-card h-100 shadow-sm border-0 bg-white" style="margin: 0; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; border-radius: var(--radius-lg); transition: all 0.3s;">
+        <div class="stat-card__icon text-warning rounded-lg flex-shrink-0 d-flex justify-content-center align-items-center" style="background: #fffbeb; width: 60px; height: 60px; font-size: 2rem;"><i class="ri-alarm-warning-fill"></i></div>
+        <div>
+            <div class="stat-card__number" style="font-size: 1.8rem; font-weight: 800; line-height: 1.2; color: #0f172a;"><?= htmlspecialchars($total_sedang) ?></div>
+            <div class="stat-card__label" style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Risiko Sedang</div>
         </div>
     </div>
-    <div class="col-md-3 mb-3">
-        <div class="stat-card h-100" style="margin: 0;">
-            <div class="stat-card__icon text-success" style="background: #ecfdf5;"><i class="ri-shield-check-fill"></i></div>
-            <div>
-                <div class="stat-card__number"><?= htmlspecialchars($total_rendah) ?></div>
-                <div class="stat-card__label">Risiko Rendah</div>
-            </div>
+    
+    <div class="stat-card h-100 shadow-sm border-0 bg-white" style="margin: 0; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; border-radius: var(--radius-lg); transition: all 0.3s;">
+        <div class="stat-card__icon text-success rounded-lg flex-shrink-0 d-flex justify-content-center align-items-center" style="background: #ecfdf5; width: 60px; height: 60px; font-size: 2rem;"><i class="ri-shield-check-fill"></i></div>
+        <div>
+            <div class="stat-card__number" style="font-size: 1.8rem; font-weight: 800; line-height: 1.2; color: #0f172a;"><?= htmlspecialchars($total_rendah) ?></div>
+            <div class="stat-card__label" style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Risiko Rendah</div>
         </div>
     </div>
 </div>
@@ -108,8 +133,33 @@ $status_text = $total_tinggi > 0 ? 'Perlu Pemantauan' : 'Terkendali';
 </div>
 
 <style>
+/* ---- Dashboard Grid Layout ---- */
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Enhancements & Animations */
+.executive-summary-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+}
+
+.stat-card { animation: slideUp 0.6s ease-out backwards; }
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 86, 160, 0.08), 0 4px 6px -2px rgba(0, 86, 160, 0.04) !important;
+}
+
 .activity-item { animation: fadeIn 0.4s ease-in-out; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
 <?php require_once __DIR__ . '/layouts/footer.php'; ?>
