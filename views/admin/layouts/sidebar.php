@@ -14,6 +14,10 @@
                     <i class="ri-dashboard-3-line"></i> <span>Dashboard</span>
                 </a>
             </li>
+        </ul>
+
+        <div class="nav-section-title mt-4">KONTEN SISTEM</div>
+        <ul class="nav-list list-unstyled">
             <li>
                 <a href="<?= $base_path ?>admin/risiko.php" class="sidebar-link <?= ($current_page == 'risiko.php') ? 'active' : '' ?>">
                     <i class="ri-fire-line"></i> <span>Matriks Risiko</span>
@@ -24,13 +28,18 @@
                     <i class="ri-article-line"></i> <span>Artikel Edukasi</span>
                 </a>
             </li>
-        </ul>
-
-        <div class="nav-section-title mt-4">KONTEN SISTEM</div>
-        <ul class="nav-list list-unstyled">
             <li>
                 <a href="<?= $base_path ?>admin/konten.php" class="sidebar-link <?= ($current_page == 'konten.php') ? 'active' : '' ?>">
                     <i class="ri-pages-line"></i> <span>CMS Website</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-section-title mt-4">ADMINISTRASI</div>
+        <ul class="nav-list list-unstyled">
+            <li>
+                <a href="<?= $base_path ?>admin/admins.php" class="sidebar-link <?= ($current_page == 'admins.php') ? 'active' : '' ?>">
+                    <i class="ri-group-line"></i> <span>Manajemen Admin</span>
                 </a>
             </li>
         </ul>

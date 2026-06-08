@@ -14,18 +14,20 @@ $status_icon = $total_tinggi > 0 ? 'ri-alarm-warning-fill' : 'ri-shield-check-fi
 $status_text = $total_tinggi > 0 ? 'Perlu Pemantauan' : 'Terkendali';
 ?>
 <!-- Ringkasan Eksekutif Panel -->
-<div class="card border border-2 shadow-sm rounded-lg mb-4 <?= $total_tinggi > 0 ? 'bg-white' : 'bg-white' ?>">
-    <div class="card__body p-4 d-flex align-items-center justify-content-between" style="border-left: 5px solid <?= $total_tinggi > 0 ? '#ef4444' : '#10b981' ?>;">
+<!-- Ringkasan Eksekutif Panel -->
+<div class="card border-0 shadow-sm rounded-lg mb-4" style="background-color: <?= $total_tinggi > 0 ? '#fef2f2' : '#f0fdf4' ?>; position: relative; overflow: hidden;">
+    <div style="position: absolute; left: 0; top: 0; width: 6px; height: 100%; background-color: <?= $total_tinggi > 0 ? '#ef4444' : '#10b981' ?>;"></div>
+    <div class="card__body p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3" style="padding-left: 1.5rem !important;">
         <div>
-            <h5 class="font-weight-bold m-0 mb-1 text-dark">Status Keselamatan: <span class="<?= $total_tinggi > 0 ? 'text-danger' : 'text-success' ?>"><?= $status_text ?></span></h5>
-            <p class="text-muted m-0 fs-7">
+            <h5 class="font-weight-bold m-0 mb-2">Status Keselamatan: <span class="<?= $total_tinggi > 0 ? 'text-danger' : 'text-success' ?>"><?= $status_text ?></span></h5>
+            <p class="text-muted m-0 fs-6" style="line-height: 1.6;">
                 Dari total <strong class="text-dark"><?= htmlspecialchars($total_risiko) ?></strong> profil risiko yang tercatat, terdapat 
-                <strong class="text-danger"><?= htmlspecialchars($total_tinggi) ?></strong> risiko tinggi, 
+                <strong class="<?= $total_tinggi > 0 ? 'text-danger font-weight-bold' : 'text-dark' ?>"><?= htmlspecialchars($total_tinggi) ?></strong> risiko tinggi, 
                 <strong class="text-warning"><?= htmlspecialchars($total_sedang) ?></strong> risiko sedang, dan 
                 <strong class="text-success"><?= htmlspecialchars($total_rendah) ?></strong> risiko rendah.
             </p>
         </div>
-        <div class="icon-box d-none d-md-flex align-items-center justify-content-center" style="font-size: 2.5rem; <?= $total_tinggi > 0 ? 'color: #ef4444; background: #fef2f2;' : 'color: #10b981; background: #ecfdf5;' ?> width: 60px; height: 60px; border-radius: 50%;">
+        <div class="icon-box flex-shrink-0 d-flex align-items-center justify-content-center bg-white shadow-sm" style="font-size: 2.5rem; <?= $total_tinggi > 0 ? 'color: #ef4444;' : 'color: #10b981;' ?> width: 70px; height: 70px; border-radius: 50%;">
             <i class="<?= $status_icon ?>"></i>
         </div>
     </div>

@@ -24,12 +24,20 @@ class ArtikelController {
     }
 
     public function store($data) {
-        // Implementasi slug otomatis & sanitasi harus dipanggil di sini nantinya
-        return $this->model->create($data);
+        try {
+            return $this->model->create($data);
+        } catch (PDOException $e) {
+            // Mengatasi error slug duplicate atau DB exception lain
+            return false;
+        }
     }
 
     public function update($id, $data) {
-        return $this->model->update($id, $data);
+        try {
+            return $this->model->update($id, $data);
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function destroy($id) {

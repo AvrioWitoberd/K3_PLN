@@ -6,6 +6,7 @@ require_once __DIR__ . '/../controllers/KontenController.php';
 $auth = new AuthController();
 $auth->checkAuth();
 
+
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     $auth->logout();
     header('Location: login.php');

@@ -40,7 +40,31 @@ class UserModel {
         $query = "SELECT id, username, role, created_at FROM " . $this->table_name . " ORDER BY id ASC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserById($id) {
+        $query = "SELECT id, username, role, created_at FROM " . $this->table_name . " WHERE id = :id LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function updateUser($id, $username, $password = null) {
+        if ($password) {
+            $query = "UPDATE " . $this->table_name . " SET username = :username, password = :password WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $stmt->bindParam(':password', $passwordHash);
+        } else {
+            $query = "UPDATE " . $this->table_name . " SET username = :username WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+        }
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':id', $id);
+
+        return $stmt->execute();
     }
 
     public function deleteUser($id) {
