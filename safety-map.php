@@ -1,4 +1,4 @@
 <?php
 // Root router untuk Peta Keselamatan
-require_once 'views/safety-map.php';
+require_once __DIR__ . '/views/safety-map.php';
 ?>

@@ -837,3 +837,343 @@ a:hover {
 .bg-success-soft { background: linear-gradient(135deg, #10b981 0%, #6ee7b7 100%); }
 .corporate-summary { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2.5rem; margin-top: 4rem; margin-bottom: 4rem; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
 .corporate-summary p { font-size: 1.1rem; color: #475569; line-height: 1.7; font-weight: 500; margin: 0; max-width: 900px; margin-left: auto; margin-right: auto; }
+
+/* =========================================
+   Phase 2: Admin Enterprise UI 2026
+   ========================================= */
+
+.admin-body { background-color: var(--bg-body); overflow-x: hidden; }
+.admin-layout { display: flex; width: 100%; min-height: 100vh; }
+
+/* Sidebar Fixed Enterprise */
+.admin-sidebar {
+    width: 260px;
+    background: #0f172a; 
+    color: #fff;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.sidebar-header {
+    height: 72px;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-nav { flex-grow: 1; padding: 1rem 0; overflow-y: auto; }
+.nav-section-title {
+    padding: 0 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: var(--transition-smooth);
+}
+
+.sidebar-link:hover { color: #fff; background: rgba(255,255,255,0.03); }
+.sidebar-link.active {
+    color: #fff;
+    background: rgba(0, 174, 239, 0.1);
+    border-left-color: var(--pln-secondary);
+}
+
+.sidebar-link i { font-size: 1.25rem; }
+
+/* Main Content Area */
+.admin-main {
+    flex-grow: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+/* Topbar Modern 2026 */
+.admin-topbar {
+    height: 72px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.topbar-search {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 99px;
+    padding: 0.5rem 1rem;
+    width: 320px;
+    gap: 0.5rem;
+    color: #64748b;
+}
+
+.topbar-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.topbar-actions { display: flex; align-items: center; gap: 1.5rem; }
+.btn-icon-topbar, .btn-icon { background: none; border: none; font-size: 1.25rem; color: #64748b; cursor: pointer; transition: all 0.2s; }
+.btn-icon:hover { color: var(--pln-primary); transform: scale(1.1); }
+
+.admin-profile { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+.admin-avatar { width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+/* Utility additions */
+.bg-dark-soft { background-color: rgba(255,255,255,0.1); }
+.border-dark-soft { border-color: rgba(255,255,255,0.05) !important; }
+.fs-7 { font-size: 0.8rem; }
+.tracking-wide { letter-spacing: 0.05em; }
+.ps-0 { padding-left: 0 !important; }
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .admin-sidebar { transform: translateX(-100%); }
+    .admin-main { margin-left: 0; }
+}
+
+/* Dark Mode (OS Prefers-Color-Scheme implementation via JS Class Toggle) */
+html.dark-mode .admin-main { background: #0f172a; }
+html.dark-mode .admin-topbar, html.dark-mode .card, html.dark-mode .table-wrapper { background: #1e293b; border-color: #334155; color: #f8fafc; }
+html.dark-mode .text-dark { color: #f8fafc !important; }
+html.dark-mode .card__header.bg-white { background: #1e293b !important; border-bottom-color: #334155 !important; }
+html.dark-mode .bg-light, html.dark-mode .form-control, html.dark-mode .input-group-text { background: #334155 !important; color: #fff; border-color:#475569;}
+html.dark-mode .table td { border-bottom-color: #334155; }
+html.dark-mode .table th.bg-light { background: #0f172a !important; color: #cbd5e1; }
+html.dark-mode .table-hover tbody tr:hover { background-color: #334155; }
+html.dark-mode input[type="text"], html.dark-mode select { color: #fff; }
+html.dark-mode .topbar-search { background: #334155; color: #fff; }
+
+/* =========================================
+   Phase 12C: Modal, Action Dropdown, Pagination 
+   Search, Empty State, Loading State
+   ========================================= */
+
+/* --- Modal Backdrop --- */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.55);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+.modal-backdrop.show { display: flex; }
+
+.modal-dialog {
+    background: transparent;
+    width: 100%;
+    max-width: 680px;
+    margin: 1rem;
+    animation: slideUp 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-body { padding: 1.5rem; }
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.2s;
+    padding: 0.25rem;
+    border-radius: 6px;
+}
+.btn-close:hover { color: #ef4444; background: #fef2f2; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* --- Action Dropdown Menu --- */
+.action-dropdown { position: relative; display: inline-block; }
+
+.action-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    min-width: 150px;
+    z-index: 1500;
+    overflow: hidden;
+    animation: slideUp 0.15s ease;
+}
+.action-menu.show { display: block; }
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s;
+    cursor: pointer;
+}
+.action-item:hover { background: #f8fafc; }
+.action-item.text-primary:hover { background: #eff6ff; }
+.action-item.text-danger:hover { background: #fef2f2; }
+.action-item i { font-size: 1rem; }
+.action-item + .action-item { border-top: 1px solid #f1f5f9; }
+
+/* --- Search Toolbar --- */
+.search-form input:focus, .search-form select:focus {
+    border-color: var(--pln-secondary) !important;
+    box-shadow: 0 0 0 3px rgba(0,174,239,0.1) !important;
+    outline: none;
+}
+
+/* --- Pagination Component --- */
+.pagination { flex-wrap: wrap; }
+.pagination .btn--flat { border-radius: 8px; font-weight: 500; font-size: 0.9rem; }
+
+/* --- Empty State --- */
+.empty-state-icon {
+    font-size: 4rem;
+    opacity: 0.15;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* --- CRUD Grid 2-col inside Modal --- */
+.crud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width: 576px) { .crud-grid { grid-template-columns: 1fr; } }
+
+/* --- Stat Card Improvement --- */
+.stat-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.stat-card__icon { 
+    width:52px; height:52px; border-radius:12px; 
+    display:flex; align-items:center; justify-content:center; 
+    font-size:1.5rem; flex-shrink:0; 
+}
+
+/* --- Badge Risiko Enterprise --- */
+.badge.badge--danger, .badge.badge--danger.badge--soft-shadow {
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+}
+.badge.badge--warning, .badge.badge--warning.badge--soft-shadow {
+    background: #fffbeb; color: #d97706; border: 1px solid #fde68a;
+}
+.badge.badge--info, .badge.badge--info.badge--soft-shadow {
+    background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe;
+}
+
+/* --- Loading Spinner Animation --- */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.ri-spin { display: inline-block; animation: spin 0.8s linear infinite; }
+
+/* --- Alert Modern --- */
+.alert { padding: 0.85rem 1.25rem; border-radius: 10px; font-size: 0.92rem; }
+.alert-success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+.alert-danger { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+/* --- Table Modernize --- */
+.risk-table thead th { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #64748b; }
+.risk-table tbody tr td { font-size: 0.92rem; vertical-align: middle; }
+
+/* --- Dark Mode: Additions --- */
+html.dark-mode .modal-content { background: #1e293b; }
+html.dark-mode .modal-header { border-color: #334155; background: #0f172a; }
+html.dark-mode .action-menu { background: #1e293b; border-color: #334155; }
+html.dark-mode .action-item:hover { background: #0f172a; }
+html.dark-mode .stat-card { background: #1e293b; border-color: #334155; }
+html.dark-mode .alert-success { background: #064e3b; border-color: #065f46; color: #a7f3d0; }
+html.dark-mode .alert-danger { background: #7f1d1d; border-color: #991b1b; color: #fecaca; }
+html.dark-mode .search-form input, html.dark-mode .search-form select { background: #1e293b !important; color: #e2e8f0; border-color: #475569; }
+html.dark-mode .crud-grid .form-control { background: #0f172a !important; color: #e2e8f0; border-color: #334155; }
+
+/* =========================================
+   Phase 12C Additions: Avatar Initial, Mobile Sidebar
+   ========================================= */
+
+/* Avatar Initial (initial letter circle, replaces broken img) */
+.admin-avatar-initial {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pln-secondary, #00aeef), #0057a8);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+}
+
+/* Mobile sidebar open state */
+@media (max-width: 991px) {
+    .admin-sidebar.open { transform: translateX(0); }
+    .admin-sidebar { transition: transform 0.3s ease; }
+}

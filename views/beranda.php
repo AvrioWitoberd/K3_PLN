@@ -1,4 +1,4 @@
-<?php require_once 'views/includes/header.php'; ?>
+<?php require_once __DIR__ . '/includes/header.php'; ?>
 
     <main>
         
@@ -110,4 +110,4 @@
 
     </main>
 
-<?php require_once 'views/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

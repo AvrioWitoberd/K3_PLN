@@ -1,4 +1,4 @@
-<?php require_once 'views/includes/header.php'; ?>
+<?php require_once __DIR__ . '/includes/header.php'; ?>
 
     <main class="container page-layout">
         <section class="risk-section">
@@ -59,4 +59,4 @@
         </section>
     </main>
 
-<?php require_once 'views/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

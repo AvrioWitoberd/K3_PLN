@@ -1,11 +1,12 @@
 <?php
-require_once 'controllers/AuthController.php';
+$base_path = '../';
+require_once __DIR__ . '/../controllers/AuthController.php';
 
 $auth = new AuthController();
 
 // Redirect otomatis jika sudah login
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    header('Location: dashboard.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Delegasikan logika autentikasi ke Controller
     if ($auth->login($user, $pass)) {
-        header('Location: dashboard.php');
+        header('Location: index.php');
         exit;
     } else {
         $error = 'Username atau password salah.';
@@ -24,5 +25,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Render View Login
-require_once 'views/login.php';
+require_once __DIR__ . '/../views/login.php';
 ?>

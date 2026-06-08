@@ -24,5 +24,6 @@
             </div>
         </div>
     </footer>
+    <script src="<?= isset($base_path) ? $base_path : '' ?>assets/js/main.js"></script>
 </body>
 </html>
