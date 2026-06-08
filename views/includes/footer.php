@@ -1,8 +1,16 @@
+<?php
+if (!isset($cms)) {
+    require_once __DIR__ . '/../../controllers/KontenController.php';
+    $kCtrl = new KontenController();
+    $cms = [];
+    foreach($kCtrl->index() as $row) $cms[$row['kunci']] = $row['nilai'];
+}
+?>
     <footer class="footer mt-auto">
         <div class="container footer__grid">
             <div class="footer__brand">
                 <h3 class="footer__title"><i class="ri-flash-light-fill text-gradient"></i> SIM K3 PLN</h3>
-                <p class="footer__desc">Sistem Informasi Manajemen Keselamatan dan Kesehatan Kerja untuk menjamin efisiensi proteksi di lingkungan ketenagalistrikan nasional.</p>
+                <p class="footer__desc"><?= htmlspecialchars($cms['footer_description'] ?? 'Sistem Informasi Manajemen Keselamatan dan Kesehatan Kerja Nasional.') ?></p>
             </div>
             <div class="footer__team">
                 <h4 class="footer__subtitle"><i class="ri-team-line"></i> Tim Penyusun (Polinema)</h4>
@@ -15,12 +23,12 @@
             </div>
             <div class="footer__info">
                 <h4 class="footer__subtitle"><i class="ri-bank-line"></i> Institusi Akademik</h4>
-                <p>Program Studi Sistem Informasi Bisnis<br>Jurusan Teknologi Informasi<br>Politeknik Negeri Malang | 2026</p>
+                <p>Program Studi Sistem Informasi Bisnis<br>Jurusan Teknologi Informasi<br>Politeknik Negeri Malang | <?= date('Y') ?></p>
             </div>
         </div>
         <div class="footer__bottom">
             <div class="container">
-                <p>&copy; <?= date("Y"); ?> SIM K3 PT PLN (Persero). Dibuat untuk keperluan evaluasi akademik.</p>
+                <p><?= htmlspecialchars($cms['footer_copyright'] ?? '© 2026 PT Perusahaan') ?></p>
             </div>
         </div>
     </footer>

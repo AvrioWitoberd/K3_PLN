@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../models/RisikoModel.php';
+require_once __DIR__ . '/../models/ActivityModel.php';
 
 class RisikoController {
     private $model;
@@ -44,14 +45,28 @@ class RisikoController {
         $cegah = htmlspecialchars(strip_tags($data['cegah'] ?? ''));
 
         if (!empty($lokasi) && !empty($sumber) && !empty($cegah)) {
-            return $this->model->create($lokasi, $sumber, $kategori, $cegah);
+            $result = $this->model->create($lokasi, $sumber, $kategori, $cegah);
+            if ($result) {
+                if (session_status() === PHP_SESSION_NONE) { session_start(); }
+                $db = (new Database())->getConnection();
+                $activityModel = new ActivityModel($db);
+                $activityModel->logActivity($_SESSION['user_id'] ?? null, $_SESSION['username'] ?? 'System', 'Tambah Risiko (' . $lokasi . ')');
+            }
+            return $result;
         }
         return false;
     }
 
     public function destroy($id) {
         $id = htmlspecialchars(strip_tags($id));
-        return $this->model->delete($id);
+        $result = $this->model->delete($id);
+        if ($result) {
+            if (session_status() === PHP_SESSION_NONE) { session_start(); }
+            $db = (new Database())->getConnection();
+            $activityModel = new ActivityModel($db);
+            $activityModel->logActivity($_SESSION['user_id'] ?? null, $_SESSION['username'] ?? 'System', 'Hapus Risiko ID ' . $id);
+        }
+        return $result;
     }
 
     public function edit($id) {
@@ -69,7 +84,14 @@ class RisikoController {
         ];
 
         if (!empty($data_clean['lokasi']) && !empty($data_clean['sumber_bahaya']) && !empty($data_clean['tindakan_pencegahan'])) {
-            return $this->model->update($id, $data_clean);
+            $result = $this->model->update($id, $data_clean);
+            if ($result) {
+                if (session_status() === PHP_SESSION_NONE) { session_start(); }
+                $db = (new Database())->getConnection();
+                $activityModel = new ActivityModel($db);
+                $activityModel->logActivity($_SESSION['user_id'] ?? null, $_SESSION['username'] ?? 'System', 'Edit Risiko (' . $data_clean['lokasi'] . ')');
+            }
+            return $result;
         }
         return false;
     }

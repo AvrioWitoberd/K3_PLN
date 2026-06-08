@@ -1,13 +1,21 @@
 <?php require_once __DIR__ . '/includes/header.php'; ?>
+<?php
+if (!isset($cms)) {
+    require_once __DIR__ . '/../controllers/KontenController.php';
+    $kCtrl = new KontenController();
+    $cms = [];
+    foreach($kCtrl->index() as $row) $cms[$row['kunci']] = $row['nilai'];
+}
+?>
 
     <main class="container page-layout">
         
         <section class="profile-section">
             <div class="section-header text-center">
                 <span class="section-label">Profil Korporat & Landasan Berpikir</span>
-                <h1 class="section-title">Komitmen Regulasi & Kebijakan K3</h1>
+                <h1 class="section-title"><?= htmlspecialchars($cms['profil_title'] ?? 'Profil K3 Perusahaan') ?></h1>
                 <p class="section-desc max-w-2xl mx-auto">
-                    Struktur pengawasan organisasi PT PLN (Persero) yang terintegrasi secara nasional untuk menegakkan kampanye "Zero Accident" sesuai perintah Undang-Undang Republik Indonesia.
+                    <?= htmlspecialchars($cms['profil_description'] ?? 'Kinerja K3 merupakan tulang punggung operasional korporat.') ?>
                 </p>
             </div>
         </section>

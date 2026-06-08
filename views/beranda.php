@@ -1,4 +1,12 @@
 <?php require_once __DIR__ . '/includes/header.php'; ?>
+<?php
+require_once __DIR__ . '/../controllers/KontenController.php';
+if (!isset($cms)) {
+    $kCtrl = new KontenController();
+    $cms = [];
+    foreach($kCtrl->index() as $row) $cms[$row['kunci']] = $row['nilai'];
+}
+?>
 
     <main>
         
@@ -10,15 +18,15 @@
                 
                 <div class="hero-premium__inner">
                     <span class="badge mb-4 border-0" style="background-color: rgba(0, 86, 160, 0.3); color: #93c5fd; padding: 0.4rem 1rem; font-size: 0.8rem;">Corporate Safety Portal</span>
-                    <h1>Utamakan Keselamatan, Kelola Risiko <span class="text-gradient">Tanpa Kompromi</span></h1>
-                    <p>Platform enterprise untuk monitoring potensi bahaya, zonasi keselamatan operasional, dan edukasi preventif ketenagalistrikan ruang lingkup PT PLN (Persero).</p>
+                    <h1><?= htmlspecialchars($cms['hero_title'] ?? 'Sistem Keselamatan Terintegrasi') ?></h1>
+                    <p><?= htmlspecialchars($cms['hero_subtitle'] ?? 'Monitoring dan pengelolaan keselamatan operasional korporat secara real-time') ?></p>
                     
                     <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
                         <a href="identifikasi.php" class="hero-action-primary">
-                            <i class="ri-thunderstorms-line fs-5"></i> Lihat Matriks Risiko
+                            <i class="ri-thunderstorms-line fs-5"></i> <?= htmlspecialchars($cms['hero_cta_primary'] ?? 'Lihat Matriks Risiko') ?>
                         </a>
                         <a href="safety-map.php" class="hero-action-outline">
-                            <i class="ri-map-pin-user-line fs-5"></i> Peta & Rambu
+                            <i class="ri-map-pin-user-line fs-5"></i> <?= htmlspecialchars($cms['hero_cta_secondary'] ?? 'Peta & Rambu') ?>
                         </a>
                     </div>
                 </div>
@@ -104,8 +112,9 @@
         <!-- 4. CORPORATE SUMMARY PANEL -->
         <section class="container mt-4 mb-2">
             <div class="corporate-summary">
-                <p>Kesehatan dan Keselamatan Kerja (K3) merupakan aspek mutlak untuk melindungi insan PLN dari risiko kecelakaan kerja demi mewujudkan lingkungan operasional yang aman, sehat, dan produktif.</p>
+                <p><?= htmlspecialchars($cms['company_summary'] ?? 'Kesehatan dan Keselamatan Kerja (K3) merupakan aspek mutlak untuk melindungi insan PLN dari risiko kecelakaan kerja demi mewujudkan lingkungan operasional yang aman, sehat, dan produktif.') ?></p>
             </div>
+
         </section>
 
     </main>

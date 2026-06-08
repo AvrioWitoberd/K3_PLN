@@ -24,26 +24,23 @@
         <div class="nav-section-title mt-4">KONTEN SISTEM</div>
         <ul class="nav-list list-unstyled">
             <li>
-                <a href="#" class="sidebar-link text-muted" onclick="alert('Modul Edukasi sedang dalam pengembangan');">
-                    <i class="ri-book-open-line"></i> <span>Artikel Edukasi</span> <span class="badge bg-dark-soft ms-auto fs-7 border-0 text-light py-1 px-2 m-0 shadow-none text-lowercase">pro</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="sidebar-link text-muted" onclick="alert('Modul CMS sedang dalam pengembangan');">
+                <a href="<?= $base_path ?>admin/konten.php" class="sidebar-link <?= ($current_page == 'konten.php') ? 'active' : '' ?>">
                     <i class="ri-pages-line"></i> <span>CMS Website</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="sidebar-link text-muted" onclick="alert('Modul Pengguna sedang dalam pengembangan');">
-                    <i class="ri-group-line"></i> <span>Manajemen User</span>
                 </a>
             </li>
         </ul>
     </nav>
     
     <div class="sidebar-footer mt-auto p-4 border-top border-dark-soft">
+        <div class="d-flex align-items-center gap-2 mb-3 px-2">
+            <div class="icon-box icon-box--small bg-dark-soft text-light flex-shrink-0"><i class="ri-user-line"></i></div>
+            <div>
+                <p class="m-0 text-white fs-7 font-weight-bold"><?= htmlspecialchars($_SESSION['username'] ?? 'Admin') ?></p>
+                <small class="text-muted" style="font-size:0.7rem;">Administrator</small>
+            </div>
+        </div>
         <a href="<?= $base_path ?>admin/index.php?action=logout" onclick="return confirm('Keluar dari portal?');" class="btn btn--flat text-danger w-100 justify-content-start hover-bg-danger-light rounded p-2 transition-all border-0 bg-transparent text-start">
-            <i class="ri-logout-circle-r-line fs-5"></i> <span class="font-weight-bold">Singkap Perisai</span>
+            <i class="ri-logout-circle-r-line fs-5"></i> <span class="font-weight-bold">Keluar</span>
         </a>
     </div>
 </aside>

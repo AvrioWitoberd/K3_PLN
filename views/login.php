@@ -4,151 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login — SIM K3 PLN Portal</title>
+    <meta name="description" content="Portal login admin Sistem Informasi Manajemen K3 PLN. Akses khusus petugas K3 tervalidasi.">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= $base_path ?>assets/css/style.css">
     <style>
         /* ============================
-           LOGIN PAGE — ENTERPRISE 2026
+           LOGIN PAGE — CENTERED CARD
+           ENTERPRISE 2026
            ============================ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body.login-enterprise {
             min-height: 100vh;
             display: flex;
-            background: #f0f4f8;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* LEFT PANEL — Branding */
-        .login-left {
-            flex: 1;
-            background: linear-gradient(145deg, #003f7f 0%, #0056A0 40%, #00AEEF 100%);
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #002f60 0%, #003f7f 30%, #0056A0 65%, #00AEEF 100%);
             position: relative;
             overflow: hidden;
         }
 
-        /* Decorative circles in background */
-        .login-left::before {
+        /* Decorative background orbs */
+        body.login-enterprise::before {
             content: '';
-            position: absolute;
-            width: 500px; height: 500px;
+            position: fixed;
+            width: 600px; height: 600px;
             background: rgba(255,255,255,0.04);
             border-radius: 50%;
-            top: -150px; right: -150px;
+            top: -200px; right: -200px;
+            pointer-events: none;
         }
-        .login-left::after {
+        body.login-enterprise::after {
             content: '';
-            position: absolute;
-            width: 320px; height: 320px;
-            background: rgba(255,255,255,0.05);
+            position: fixed;
+            width: 400px; height: 400px;
+            background: rgba(0,174,239,0.12);
             border-radius: 50%;
-            bottom: -80px; left: -80px;
+            bottom: -120px; left: -120px;
+            pointer-events: none;
         }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+        /* Additional decorative orb */
+        .bg-orb {
+            position: fixed;
+            width: 250px; height: 250px;
+            background: rgba(245,166,35,0.06);
+            border-radius: 50%;
+            top: 60%; left: 60%;
+            pointer-events: none;
+        }
+
+        /* ── LOGIN CARD WRAPPER ── */
+        .login-wrapper {
             position: relative;
-            z-index: 1;
-        }
-        .brand-logo-icon {
-            width: 56px; height: 56px;
-            background: linear-gradient(135deg, #F5A623, #f8c46f);
-            border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.75rem; color: #fff;
-            box-shadow: 0 8px 24px rgba(245,166,35,0.4);
-        }
-        .brand-logo-text {
-            color: #fff;
-        }
-        .brand-logo-text strong {
-            display: block;
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-        .brand-logo-text span {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            z-index: 10;
+            width: 100%;
+            max-width: 480px;
+            padding: 1.5rem;
         }
 
-        .brand-headline {
-            color: #fff;
-            text-align: center;
-            position: relative; z-index: 1;
-        }
-        .brand-headline h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-        }
-        .brand-headline h1 em {
-            font-style: normal;
-            color: #F5A623;
-        }
-        .brand-headline p {
-            font-size: 1rem;
-            opacity: 0.75;
-            line-height: 1.7;
-            max-width: 340px;
-            margin: 0 auto;
-        }
-
-        .brand-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            position: relative; z-index: 1;
-        }
-        .brand-stat {
-            text-align: center;
-            color: rgba(255,255,255,0.85);
-        }
-        .brand-stat strong {
-            display: block;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1;
-        }
-        .brand-stat span {
-            font-size: 0.75rem;
-            opacity: 0.65;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* RIGHT PANEL — Login Form */
-        .login-right {
-            width: 480px;
-            flex-shrink: 0;
+        /* Top brand strip */
+        .login-brand {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            background: #fff;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
+        }
+        .login-brand-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #F5A623, #f8c46f);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #fff;
+            box-shadow: 0 6px 20px rgba(245,166,35,0.45);
+            flex-shrink: 0;
+        }
+        .login-brand-text strong {
+            display: block;
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .login-brand-text span {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
+        /* ── THE CARD ── */
         .login-card {
-            width: 100%;
-            max-width: 400px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 2.5rem 2.5rem 2rem;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 20px 60px rgba(0,0,0,0.18),
+                0 0 0 1px rgba(255,255,255,0.08);
+            animation: cardUp 0.45s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        @keyframes cardUp {
+            from { opacity: 0; transform: translateY(28px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .login-header {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
         .login-header .sys-badge {
             display: inline-flex;
@@ -156,39 +120,39 @@
             gap: 0.4rem;
             background: #eff6ff;
             color: #0056A0;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.07em;
             text-transform: uppercase;
-            padding: 0.35rem 0.85rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 99px;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.1rem;
             border: 1px solid #bfdbfe;
         }
         .login-header h2 {
-            font-size: 1.75rem;
+            font-size: 1.65rem;
             font-weight: 800;
             color: #0f172a;
             letter-spacing: -0.03em;
             line-height: 1.2;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.45rem;
         }
         .login-header p {
             color: #64748b;
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             line-height: 1.6;
         }
 
-        /* Form elements */
+        /* ── Form elements ── */
         .lf-group {
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.25rem;
         }
         .lf-label {
             display: block;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: #334155;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.45rem;
             letter-spacing: 0.01em;
         }
         .lf-input-wrap {
@@ -200,16 +164,16 @@
             top: 50%;
             transform: translateY(-50%);
             color: #94a3b8;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             pointer-events: none;
             transition: color 0.2s;
         }
         .lf-input {
             width: 100%;
-            padding: 0.85rem 1rem 0.85rem 2.85rem;
+            padding: 0.82rem 1rem 0.82rem 2.75rem;
             border: 1.5px solid #e2e8f0;
             border-radius: 12px;
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             font-family: 'Inter', sans-serif;
             color: #0f172a;
             background: #f8fafc;
@@ -222,7 +186,6 @@
             background: #fff;
             box-shadow: 0 0 0 4px rgba(0,86,160,0.1);
         }
-        .lf-input:focus + .lf-input-icon,
         .lf-input-wrap:focus-within .lf-input-icon {
             color: #0056A0;
         }
@@ -237,7 +200,7 @@
             border: none;
             color: #94a3b8;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             padding: 0;
             transition: color 0.2s;
         }
@@ -247,18 +210,18 @@
         .login-alert {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.7rem;
             background: #fef2f2;
             border: 1px solid #fecaca;
             border-radius: 10px;
-            padding: 0.85rem 1rem;
+            padding: 0.8rem 1rem;
             color: #dc2626;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             font-weight: 500;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.4rem;
             animation: shakeIn 0.35s ease;
         }
-        .login-alert i { font-size: 1.1rem; flex-shrink: 0; }
+        .login-alert i { font-size: 1.05rem; flex-shrink: 0; }
         @keyframes shakeIn {
             0%   { transform: translateX(-6px); opacity: 0; }
             40%  { transform: translateX(4px); }
@@ -269,10 +232,10 @@
         /* Submit button */
         .lf-btn {
             width: 100%;
-            padding: 0.95rem 1.5rem;
+            padding: 0.9rem 1.5rem;
             background: linear-gradient(135deg, #0056A0 0%, #00AEEF 100%);
             color: #fff;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             font-weight: 700;
             font-family: 'Inter', sans-serif;
             border: none;
@@ -281,15 +244,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
+            gap: 0.55rem;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 16px rgba(0,86,160,0.3);
+            box-shadow: 0 4px 16px rgba(0,86,160,0.35);
             letter-spacing: 0.01em;
-            margin-top: 1.75rem;
+            margin-top: 1.5rem;
         }
         .lf-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,86,160,0.4);
+            box-shadow: 0 8px 28px rgba(0,86,160,0.45);
         }
         .lf-btn:active { transform: translateY(0); }
         .lf-btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
@@ -297,8 +260,8 @@
         /* Footer link */
         .login-back {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
             border-top: 1px solid #f1f5f9;
         }
         .login-back a {
@@ -306,7 +269,7 @@
             align-items: center;
             gap: 0.4rem;
             color: #64748b;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
             text-decoration: none;
             transition: color 0.2s;
@@ -319,65 +282,74 @@
             align-items: center;
             justify-content: center;
             gap: 0.4rem;
-            color: #94a3b8;
-            font-size: 0.75rem;
+            color: rgba(255,255,255,0.55);
+            font-size: 0.72rem;
             margin-top: 1.5rem;
+            letter-spacing: 0.03em;
         }
+        .security-note i { font-size: 0.85rem; }
 
-        /* RESPONSIVE: hide left panel on mobile */
-        @media (max-width: 768px) {
-            .login-left { display: none; }
-            .login-right { width: 100%; }
+        /* Bottom stats strip */
+        .login-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.75rem;
+        }
+        .login-stat {
+            text-align: center;
+        }
+        .login-stat strong {
+            display: block;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .login-stat span {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* Loading spinner */
         @keyframes spin { to { transform: rotate(360deg); } }
         .spinner-icon { display: inline-block; animation: spin 0.75s linear infinite; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 540px) {
+            .login-wrapper { padding: 1rem; }
+            .login-card { padding: 2rem 1.5rem 1.75rem; border-radius: 20px; }
+            .login-brand-text strong { font-size: 1rem; }
+        }
     </style>
 </head>
 <body class="login-enterprise">
 
-    <!-- LEFT: Branding Panel -->
-    <div class="login-left">
-        <div class="brand-logo">
-            <div class="brand-logo-icon">
+    <!-- Decorative orb -->
+    <div class="bg-orb"></div>
+
+    <div class="login-wrapper">
+
+        <!-- Brand Strip -->
+        <div class="login-brand">
+            <div class="login-brand-icon">
                 <i class="ri-flash-fill"></i>
             </div>
-            <div class="brand-logo-text">
+            <div class="login-brand-text">
                 <strong>SIM K3 PLN</strong>
                 <span>PT PLN (Persero)</span>
             </div>
         </div>
 
-        <div class="brand-headline">
-            <h1>Sistem Informasi<br>Manajemen <em>K3</em><br>Terintegrasi</h1>
-            <p>Platform terpadu pemantauan keselamatan dan kesehatan kerja untuk lingkungan ketenagalistrikan nasional.</p>
-        </div>
-
-        <div class="brand-stats">
-            <div class="brand-stat">
-                <strong>ISO</strong>
-                <span>45001 Compliant</span>
-            </div>
-            <div class="brand-stat" style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 2rem;">
-                <strong>24/7</strong>
-                <span>Monitoring</span>
-            </div>
-            <div class="brand-stat" style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 2rem;">
-                <strong>PLN</strong>
-                <span>Pusat 2026</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- RIGHT: Login Form -->
-    <div class="login-right">
+        <!-- Login Card -->
         <div class="login-card">
             <div class="login-header">
                 <div class="sys-badge">
                     <i class="ri-shield-check-fill"></i> Akses Terotorisasi
                 </div>
-                <h2>Masuk ke<br>Portal Admin</h2>
+                <h2>Masuk ke Portal Admin</h2>
                 <p>Safety Management Information System — hanya untuk petugas K3 tervalidasi.</p>
             </div>
 
@@ -435,13 +407,31 @@
                     <i class="ri-arrow-left-line"></i> Kembali ke Website Publik
                 </a>
             </div>
+        </div><!-- /.login-card -->
 
-            <div class="security-note">
-                <i class="ri-lock-2-fill"></i>
-                Koneksi terenkripsi • Sesi aman HTTPS
+        <!-- Stats Strip -->
+        <div class="login-stats">
+            <div class="login-stat">
+                <strong>ISO</strong>
+                <span>45001 Compliant</span>
+            </div>
+            <div class="login-stat">
+                <strong>24/7</strong>
+                <span>Monitoring</span>
+            </div>
+            <div class="login-stat">
+                <strong>PLN</strong>
+                <span>Pusat 2026</span>
             </div>
         </div>
-    </div>
+
+        <!-- Security note -->
+        <div class="security-note">
+            <i class="ri-lock-2-fill"></i>
+            Koneksi terenkripsi &bull; Sesi aman HTTPS
+        </div>
+
+    </div><!-- /.login-wrapper -->
 
     <script>
         // Toggle password visibility

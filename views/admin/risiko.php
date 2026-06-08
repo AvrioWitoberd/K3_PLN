@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-between align-items-end mb-4">
     <div>
         <h1 class="h3 font-weight-bold text-dark m-0">Matriks Eksekusi K3</h1>
-        <p class="text-muted mt-1 mb-0">Manipulasi data keselamatan dengan fitur pencarian dan paginasi.</p>
+        <p class="text-muted mt-1 mb-0">Kelola data keselamatan dengan fitur pencarian dan paginasi.</p>
     </div>
     <button class="btn btn--primary btn--shadow px-4" onclick="openModal()">
         <i class="ri-add-line"></i> Tambah Risiko
@@ -17,22 +17,22 @@
 <?php endif; ?>
 <?php if(isset($_GET['msg']) && $_GET['msg'] === 'deleted'): ?>
     <div class="alert alert-success shadow-sm border-success rounded mb-4 d-flex align-items-center gap-2">
-        <i class="ri-check-double-line fs-5"></i> Target sel data sudah dilenyapkan dari arsitektur MySQL!
+        <i class="ri-check-double-line fs-5"></i> Data berhasil dihapus dari database.
     </div>
 <?php elseif(isset($_GET['msg']) && $_GET['msg'] === 'added'): ?>
     <div class="alert alert-success shadow-sm border-success rounded mb-4 d-flex align-items-center gap-2">
-        <i class="ri-check-double-line fs-5"></i> Injeksi data mitigasi sukses dienkripsi ke database server.
+        <i class="ri-check-double-line fs-5"></i> Data risiko berhasil ditambahkan.
     </div>
 <?php elseif(isset($_GET['msg']) && $_GET['msg'] === 'updated'): ?>
     <div class="alert alert-success shadow-sm border-success rounded mb-4 d-flex align-items-center gap-2">
-        <i class="ri-check-double-line fs-5"></i> Pembaruan data mitigasi berhasil divalidasi ke database.
+        <i class="ri-check-double-line fs-5"></i> Data risiko berhasil diperbarui.
     </div>
 <?php endif; ?>
 
 <section class="data-section">
     <div class="card border-0 shadow-sm rounded-lg bg-white overflow-hidden">
         
-        <!-- Tabel Toolbar & Search -->
+        <!-- Toolbar & Search -->
         <div class="p-3 border-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 bg-light" style="background:#f8fafc!important;">
             <form method="GET" action="risiko.php" class="d-flex gap-2 w-100 search-form" style="max-width:550px;">
                 <div class="input-group flex-grow-1" style="max-width:250px;">
@@ -62,10 +62,10 @@
                 <thead class="bg-white border-bottom">
                     <tr>
                         <th class="py-3 px-4 text-center" style="width: 80px;">ID</th>
-                        <th class="py-3">Titik Navigasi</th>
-                        <th class="py-3">Ancaman Teknis</th>
+                        <th class="py-3">Lokasi</th>
+                        <th class="py-3">Sumber Bahaya</th>
                         <th class="py-3 text-center">Kelas Risiko</th>
-                        <th class="py-3">Tindakan Preventif / Eksekusi</th>
+                        <th class="py-3">Tindakan Pencegahan</th>
                         <th class="py-3 px-4 text-center" style="width: 100px;">Aksi</th>
                     </tr>
                 </thead>
@@ -89,7 +89,7 @@
                                     </button>
                                     <div class="action-menu text-start" id="menu-<?= $row['id'] ?>">
                                         <a href="risiko.php?action=edit&id=<?= htmlspecialchars($row['id']) ?>" class="action-item text-primary">
-                                            <i class="ri-edit-line"></i> Edit Setup
+                                            <i class="ri-edit-line"></i> Edit
                                         </a>
                                         <form method="POST" action="risiko.php" class="m-0 p-0 w-100" style="display:block;">
                                             <input type="hidden" name="action" value="delete">
@@ -107,8 +107,8 @@
                         <tr>
                             <td colspan="6" class="text-center py-5">
                                 <i class="ri-folder-forbid-line fs-1 d-block mb-3 text-muted" style="opacity: 0.3; font-size:4rem!important;"></i>
-                                <h4 class="text-dark fs-5 font-weight-bold">Belum ada data matriks risiko yang tersedia.</h4>
-                                <p class="text-muted">Database nihil objek untuk filter saat ini. Ubah kata kunci atau suntikkan data baru.</p>
+                                <h4 class="text-dark fs-5 font-weight-bold">Belum ada data matriks risiko.</h4>
+                                <p class="text-muted">Ubah kata kunci pencarian atau tambahkan data baru.</p>
                                 <button class="btn btn--primary mt-3 px-4 shadow-sm" onclick="openModal()"><i class="ri-add-line"></i> Tambah Data Baru</button>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@
             </table>
         </div>
         
-        <!-- Pagination UI -->
+        <!-- Pagination -->
         <?php if($total_pages > 1): ?>
         <div class="p-3 border-top bg-light">
             <ul class="pagination m-0 list-unstyled d-flex gap-2 justify-content-center align-items-center">
@@ -127,11 +127,9 @@
                 <?php if($page > 1): ?>
                     <li><a href="risiko.php?page=<?= $page - 1 ?><?= $searchParam ?>" class="btn btn--flat border bg-white text-dark shadow-sm px-3 hover-bg-light"><i class="ri-arrow-left-s-line"></i> Previous</a></li>
                 <?php endif; ?>
-                
                 <li class="bg-primary text-white rounded px-4 py-2 font-weight-bold shadow-sm">
                     Halaman <?= $page ?> / <?= $total_pages ?>
                 </li>
-
                 <?php if($page < $total_pages): ?>
                     <li><a href="risiko.php?page=<?= $page + 1 ?><?= $searchParam ?>" class="btn btn--flat border bg-white text-dark shadow-sm px-4 hover-bg-light">Next <i class="ri-arrow-right-s-line"></i></a></li>
                 <?php endif; ?>
@@ -142,13 +140,13 @@
 </section>
 
 <!-- Modal Add/Edit -->
-<div id="risikoModal" class="modal-backdrop <?= (isset($edit_data) && $edit_data) || (isset($_GET['action']) && $_GET['action'] == 'add') ? 'show' : '' ?>">
+<div id="risikoModal" class="modal-backdrop <?= (isset($edit_data) && $edit_data) ? 'show' : '' ?>">
     <div class="modal-dialog">
         <div class="modal-content border-0">
              <div class="modal-header bg-light border-bottom">
                   <h5 class="m-0 font-weight-bold text-dark d-flex align-items-center gap-2">
                        <i class="<?= isset($edit_data) && $edit_data ? 'ri-edit-box-line text-primary' : 'ri-folder-add-line text-success' ?> fs-4"></i>
-                       <?= isset($edit_data) && $edit_data ? 'Edit Form: ID #'.$edit_data['id'] : 'Registrasi Risiko Baru' ?>
+                       <?= isset($edit_data) && $edit_data ? 'Edit Risiko: ID #'.$edit_data['id'] : 'Tambah Risiko Baru' ?>
                   </h5>
                   <button type="button" class="btn-close text-muted" onclick="closeModal()"><i class="ri-close-line"></i></button>
              </div>
@@ -160,46 +158,42 @@
                     <?php endif; ?>
                     <div class="crud-grid">
                         <div class="form-group mb-4">
-                            <label class="text-sm font-weight-bold text-dark mb-2">Koordinat Lokasi Ruang</label>
+                            <label class="text-sm font-weight-bold text-dark mb-2">Lokasi</label>
                             <div class="input-group">
                                 <span class="input-group-text border-end-0 bg-light shadow-none"><i class="ri-map-pin-2-line text-muted"></i></span>
-                                <input type="text" name="lokasi" class="form-control border-start-0" placeholder="Contoh: Turbin Sector B" required value="<?= isset($edit_data) && $edit_data ? htmlspecialchars($edit_data['lokasi']) : '' ?>">
+                                <input type="text" name="lokasi" class="form-control border-start-0" placeholder="Contoh: Area Gardu Induk" required value="<?= isset($edit_data) && $edit_data ? htmlspecialchars($edit_data['lokasi']) : '' ?>">
                             </div>
                         </div>
-
                         <div class="form-group mb-4">
-                            <label class="text-sm font-weight-bold text-dark mb-2">Penyebab / Sumber Bahaya</label>
+                            <label class="text-sm font-weight-bold text-dark mb-2">Sumber Bahaya</label>
                             <div class="input-group">
                                 <span class="input-group-text border-end-0 bg-light shadow-none"><i class="ri-thunderstorms-line text-muted"></i></span>
-                                <input type="text" name="sumber" class="form-control border-start-0" placeholder="Contoh: Radiasi Panas Tinggi" required value="<?= isset($edit_data) && $edit_data ? htmlspecialchars($edit_data['sumber_bahaya']) : '' ?>">
+                                <input type="text" name="sumber" class="form-control border-start-0" placeholder="Contoh: Tegangan Tinggi" required value="<?= isset($edit_data) && $edit_data ? htmlspecialchars($edit_data['sumber_bahaya']) : '' ?>">
                             </div>
                         </div>
-
                         <div class="form-group mb-4">
-                            <label class="text-sm font-weight-bold text-dark mb-2">Klasifikasi/Tag Bahaya</label>
+                            <label class="text-sm font-weight-bold text-dark mb-2">Klasifikasi Risiko</label>
                             <div class="input-group">
                                 <span class="input-group-text border-end-0 bg-light shadow-none"><i class="ri-price-tag-3-line text-muted"></i></span>
                                 <select name="kategori" class="form-control border-start-0 bg-white" required>
-                                    <option value="badge--danger" <?= (isset($edit_data) && $edit_data['kategori'] === 'badge--danger') ? 'selected' : '' ?>>🔴 Risiko Tinggi (Letal/Ekstrem)</option>
-                                    <option value="badge--warning" <?= (isset($edit_data) && $edit_data['kategori'] === 'badge--warning') ? 'selected' : '' ?>>🟡 Risiko Sedang (Suhu/Fisikal)</option>
-                                    <option value="badge--info" <?= (isset($edit_data) && $edit_data['kategori'] === 'badge--info') ? 'selected' : '' ?>>🔵 Risiko Rendah (Aman/Minor)</option>
+                                    <option value="badge--danger" <?= (isset($edit_data) && $edit_data['kategori'] === 'badge--danger') ? 'selected' : '' ?>>🔴 Risiko Tinggi</option>
+                                    <option value="badge--warning" <?= (isset($edit_data) && $edit_data['kategori'] === 'badge--warning') ? 'selected' : '' ?>>🟡 Risiko Sedang</option>
+                                    <option value="badge--info" <?= (isset($edit_data) && $edit_data['kategori'] === 'badge--info') ? 'selected' : '' ?>>🔵 Risiko Rendah</option>
                                 </select>
                             </div>
                         </div>
-
                         <div class="form-group mb-2">
-                            <label class="text-sm font-weight-bold text-dark mb-2">SOP Keselamatan / Mitigasi</label>
+                            <label class="text-sm font-weight-bold text-dark mb-2">Tindakan Pencegahan</label>
                             <div class="input-group">
                                 <span class="input-group-text border-end-0 bg-light shadow-none"><i class="ri-shield-check-line text-muted"></i></span>
                                 <input type="text" name="cegah" class="form-control border-start-0" placeholder="Contoh: APD Level 3 Wajib" required value="<?= isset($edit_data) && $edit_data ? htmlspecialchars($edit_data['tindakan_pencegahan']) : '' ?>">
                             </div>
                         </div>
                     </div>
-                    
                     <div class="mt-4 pt-3 border-top border-light d-flex gap-3 justify-content-end">
                         <button type="button" class="btn btn--flat text-muted px-4 hover-bg-light rounded font-weight-semibold" onclick="closeModal()">Batal</button>
                         <button type="submit" class="btn btn--primary btn--shadow px-4 d-inline-flex gap-2">
-                            <?= isset($edit_data) && $edit_data ? 'Simpan' : 'Tambahkan' ?> <i class="ri-save-3-line"></i>
+                            <?= isset($edit_data) && $edit_data ? 'Simpan Perubahan' : 'Tambahkan' ?> <i class="ri-save-3-line"></i>
                         </button>
                     </div>
                 </form>
@@ -210,17 +204,14 @@
 
 <script>
     function openModal() {
-        // Tampilkan backdrop
         document.getElementById('risikoModal').classList.add('show');
     }
     function closeModal() {
         document.getElementById('risikoModal').classList.remove('show');
-        // If query parameters have edit action, remove it by pushing URL
         if(window.location.search.includes('action=edit')) {
             window.location.href = 'risiko.php';
         }
     }
-    
     function toggleMenu(id) {
         document.querySelectorAll('.action-menu').forEach(menu => {
             if(menu.id !== 'menu-'+id) menu.classList.remove('show');
@@ -228,7 +219,6 @@
         const target = document.getElementById('menu-'+id);
         if(target) target.classList.toggle('show');
     }
-    
     document.addEventListener('click', function(e) {
         if(!e.target.closest('.dropdown-toggle-container')) {
             document.querySelectorAll('.action-menu').forEach(menu => {
