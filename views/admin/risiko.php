@@ -30,7 +30,7 @@
 <?php endif; ?>
 
 <section class="data-section">
-    <div class="card border-0 shadow-sm rounded-lg bg-white overflow-hidden">
+    <div class="card overflow-hidden">
         
         <!-- Toolbar & Search -->
         <div class="p-3 border-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 bg-light" style="background:#f8fafc!important;">

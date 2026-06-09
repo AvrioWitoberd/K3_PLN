@@ -10,8 +10,28 @@ if (!isset($cms)) {
 
     <main>
         
+        <!-- QUICK ALERT MARQUEE (K3 Context) -->
+        <div class="k3-alert-ticker">
+            <div class="ticker-wrap">
+                <div class="ticker-move">
+                    <div class="ticker-group">
+                        <span class="ticker-item"><i class="ri-alert-fill"></i> SAFETY FIRST: Pastikan Anda selalu menggunakan APD lengkap sebelum memasuki area operasional tegangan tinggi.</span>
+                        <span class="ticker-item"><i class="ri-information-fill"></i> INFO K3: Pelatihan Evakuasi Kebakaran dijadwalkan pada akhir bulan ini.</span>
+                        <span class="ticker-item"><i class="ri-shield-check-fill"></i> ZERO ACCIDENT: Mari bersama-sama wujudkan lingkungan kerja aman dan sehat.</span>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="ticker-group" aria-hidden="true">
+                        <span class="ticker-item"><i class="ri-alert-fill"></i> SAFETY FIRST: Pastikan Anda selalu menggunakan APD lengkap sebelum memasuki area operasional tegangan tinggi.</span>
+                        <span class="ticker-item"><i class="ri-information-fill"></i> INFO K3: Pelatihan Evakuasi Kebakaran dijadwalkan pada akhir bulan ini.</span>
+                        <span class="ticker-item"><i class="ri-shield-check-fill"></i> ZERO ACCIDENT: Mari bersama-sama wujudkan lingkungan kerja aman dan sehat.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
         <!-- 1. HERO SECTION (Premium Corporate Banner) -->
-        <section class="container mt-2">
+        <section class="container mb-6">
             <div class="hero-premium">
                 <!-- Objek Abstrak Penghias Background -->
                 <div class="hero__bg-element" style="opacity: 0.15; background: radial-gradient(circle, #00AEEF 0%, transparent 70%);"></div>
@@ -36,26 +56,47 @@ if (!isset($cms)) {
         <!-- 2. ENTERPRISE STATS MONITORING (Floating Card Layout) -->
         <section class="container">
             <div class="stats-overlap-grid">
-                <div class="stat-card-premium">
-                    <div class="stat-card-premium__icon icon-danger-soft"><i class="ri-shield-check-line"></i></div>
-                    <h3>0</h3>
-                    <p>Fatal Accident (Target Utama Korporasi)</p>
+                <div class="stat-card-v2 danger-card">
+                    <div class="stat-glow"></div>
+                    <div class="d-flex justify-content-between align-items-start mb-4 position-relative z-10">
+                        <div class="stat-icon-wrapper"><i class="ri-shield-check-fill"></i></div>
+                        <span class="stat-badge badge--danger">Target Utama</span>
+                    </div>
+                    <div class="stat-content text-start position-relative z-10">
+                        <h3 class="stat-value">0</h3>
+                        <p class="stat-label">Fatal Accident<br><span class="stat-sublabel">Di Seluruh Area Operasional</span></p>
+                    </div>
+                    <i class="ri-shield-check-fill stat-watermark"></i>
                 </div>
-                <div class="stat-card-premium">
-                    <div class="stat-card-premium__icon icon-warning-soft"><i class="ri-hard-hat-line"></i></div>
-                    <h3>100%</h3>
-                    <p>Kepatuhan APD Wajib & Sertifikasi Personel</p>
+                <div class="stat-card-v2 warning-card">
+                    <div class="stat-glow"></div>
+                    <div class="d-flex justify-content-between align-items-start mb-4 position-relative z-10">
+                        <div class="stat-icon-wrapper"><i class="ri-shield-user-fill"></i></div>
+                        <span class="stat-badge badge--warning">Wajib</span>
+                    </div>
+                    <div class="stat-content text-start position-relative z-10">
+                        <h3 class="stat-value">100%</h3>
+                        <p class="stat-label">Kepatuhan APD<br><span class="stat-sublabel">& Sertifikasi Personel Aktif</span></p>
+                    </div>
+                    <i class="ri-shield-user-fill stat-watermark"></i>
                 </div>
-                <div class="stat-card-premium">
-                    <div class="stat-card-premium__icon icon-primary-soft"><i class="ri-spam-3-line"></i></div>
-                    <h3>13+</h3>
-                    <p>Rambu K3 Standardisasi PLN Terpasang</p>
+                <div class="stat-card-v2 primary-card">
+                    <div class="stat-glow"></div>
+                    <div class="d-flex justify-content-between align-items-start mb-4 position-relative z-10">
+                        <div class="stat-icon-wrapper"><i class="ri-signpost-fill"></i></div>
+                        <span class="stat-badge badge--primary">Standardisasi</span>
+                    </div>
+                    <div class="stat-content text-start position-relative z-10">
+                        <h3 class="stat-value">13+</h3>
+                        <p class="stat-label">Rambu K3 PLN<br><span class="stat-sublabel">Terpasang & Terverifikasi</span></p>
+                    </div>
+                    <i class="ri-signpost-fill stat-watermark"></i>
                 </div>
             </div>
         </section>
 
         <!-- 3. MULTIMEDIA KNOWLEDGE HUB (Premium Video Grid ala YouTube Enterprise) -->
-        <section class="container mb-6 overflow-hidden">
+        <section class="container mb-6">
             <div class="section-header text-center mb-5">
                 <span class="section-label mb-2">MEDIA PEMBELAJARAN MULTIMEDIA</span>
                 <h2 class="section-title">Edukasi Terintegrasi & Manajemen Risiko K3</h2>
@@ -63,46 +104,46 @@ if (!isset($cms)) {
             
             <div class="video__grid">
                 <!-- Video 1 -->
-                <div class="video-card border-0">
-                    <div class="video-card__thumbnail">
+                <div class="video-card border-0" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="video-card__thumbnail" style="flex-shrink: 0;">
+                        <img src="https://img.youtube.com/vi/sTD2AYNsyAY/hqdefault.jpg" alt="Dasar K3" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
                         <div class="video-card__overlay"><i class="ri-play-circle-fill"></i></div>
-                        <div class="video-card__bg bg-red-soft"></div>
                     </div>
-                    <div class="video-card__body bg-white pt-4 px-4 pb-4">
+                    <div class="video-card__body" style="display: flex; flex-direction: column; flex-grow: 1;">
                         <h3 class="video-card__title">Dasar-Dasar Keilmuan K3</h3>
                         <p class="video-card__desc">Membahas esensi proteksi ruang kerja aman dan mitigasi penyakit akibat kelalaian internal atau hilangnya fungsi APD.</p>
-                        <a href="https://youtu.be/sTD2AYNsyAY" target="_blank" rel="noopener noreferrer" class="btn btn--flat text-primary font-weight-bold mt-auto pb-0 align-items-center gap-1">
-                            + Tonton Media Pembelajaran
+                        <a href="https://youtu.be/sTD2AYNsyAY" target="_blank" rel="noopener noreferrer" class="btn btn-gradient-primary w-100 d-flex justify-content-center align-items-center gap-2" style="border-radius: 12px; padding: 0.75rem; font-weight: 700; margin-top: auto;">
+                            <i class="ri-play-circle-fill fs-5"></i> Tonton Media Pembelajaran
                         </a>
                     </div>
                 </div>
 
                 <!-- Video 2 -->
-                <div class="video-card border-0">
-                    <div class="video-card__thumbnail">
+                <div class="video-card border-0" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="video-card__thumbnail" style="flex-shrink: 0;">
+                        <img src="https://img.youtube.com/vi/E7ZjcRX4Zoc/hqdefault.jpg" alt="Manajemen Risiko" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
                         <div class="video-card__overlay"><i class="ri-play-circle-fill"></i></div>
-                        <div class="video-card__bg bg-warning-soft"></div>
                     </div>
-                    <div class="video-card__body bg-white pt-4 px-4 pb-4">
+                    <div class="video-card__body" style="display: flex; flex-direction: column; flex-grow: 1;">
                         <h3 class="video-card__title">Pencegahan & Manajemen Risiko</h3>
                         <p class="video-card__desc">Metode preventif melalui identifikasi berkala, kalkulasi risiko, dan implementasi alat keselamatan di medan licin/tajam.</p>
-                        <a href="https://youtu.be/E7ZjcRX4Zoc" target="_blank" rel="noopener noreferrer" class="btn btn--flat text-primary font-weight-bold mt-auto pb-0 align-items-center gap-1">
-                            + Tonton Media Pembelajaran
+                        <a href="https://youtu.be/E7ZjcRX4Zoc" target="_blank" rel="noopener noreferrer" class="btn btn-gradient-primary w-100 d-flex justify-content-center align-items-center gap-2" style="border-radius: 12px; padding: 0.75rem; font-weight: 700; margin-top: auto;">
+                            <i class="ri-play-circle-fill fs-5"></i> Tonton Media Pembelajaran
                         </a>
                     </div>
                 </div>
 
                 <!-- Video 3 -->
-                <div class="video-card border-0">
-                    <div class="video-card__thumbnail">
+                <div class="video-card border-0" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="video-card__thumbnail" style="flex-shrink: 0;">
+                        <img src="https://img.youtube.com/vi/P2Km4AnxBsI/hqdefault.jpg" alt="Penerapan K3" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
                         <div class="video-card__overlay"><i class="ri-play-circle-fill"></i></div>
-                        <div class="video-card__bg bg-success-soft"></div>
                     </div>
-                    <div class="video-card__body bg-white pt-4 px-4 pb-4">
+                    <div class="video-card__body" style="display: flex; flex-direction: column; flex-grow: 1;">
                         <h3 class="video-card__title">Penerapan K3 di Lapangan</h3>
                         <p class="video-card__desc">Sorotan nyata kepatuhan SOP lapangan, penggunaan helm dan sarung tangan, serta penumbuhan insting sadar bahaya.</p>
-                        <a href="https://youtu.be/P2Km4AnxBsI" target="_blank" rel="noopener noreferrer" class="btn btn--flat text-primary font-weight-bold mt-auto pb-0 align-items-center gap-1">
-                            + Tonton Media Pembelajaran
+                        <a href="https://youtu.be/j5bLwZ4HofE" target="_blank" rel="noopener noreferrer" class="btn btn-gradient-primary w-100 d-flex justify-content-center align-items-center gap-2" style="border-radius: 12px; padding: 0.75rem; font-weight: 700; margin-top: auto;">
+                            <i class="ri-play-circle-fill fs-5"></i> Tonton Media Pembelajaran
                         </a>
                     </div>
                 </div>
@@ -110,7 +151,7 @@ if (!isset($cms)) {
         </section>
 
         <!-- 4. CORPORATE SUMMARY PANEL -->
-        <section class="container mt-4 mb-2">
+        <section class="container mb-6">
             <div class="corporate-summary">
                 <p><?= htmlspecialchars($cms['company_summary'] ?? 'Kesehatan dan Keselamatan Kerja (K3) merupakan aspek mutlak untuk melindungi insan PLN dari risiko kecelakaan kerja demi mewujudkan lingkungan operasional yang aman, sehat, dan produktif.') ?></p>
             </div>

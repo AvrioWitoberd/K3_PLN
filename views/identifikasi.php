@@ -2,10 +2,10 @@
 
     <main class="container page-layout">
         <section class="risk-section">
-            <div class="section-header text-center mb-5">
-                <span class="section-label">Manajemen Risiko Lanjutan</span>
-                <h1 class="section-title">Identifikasi Bahaya & Pengendalian</h1>
-                <p class="section-desc max-w-2xl mx-auto">Sistem pendeteksi terpadu potensi bahaya operasional ketenagalistrikan beserta langkah preventif dan proteksi APD wajib dari *Live* MySQL Node.</p>
+            <div class="page-heading-elegant">
+                <span class="badge">Manajemen Risiko Lanjutan</span>
+                <h1>Identifikasi Bahaya & Pengendalian</h1>
+                <p>Sistem terpadu pemantauan potensi bahaya operasional ketenagalistrikan, dilengkapi langkah preventif serta standar proteksi APD wajib secara <i>real-time</i>.</p>
             </div>
             
             <?php if(isset($error)): ?>
@@ -33,15 +33,15 @@
                         <tbody>
                             <?php if (isset($data_k3) && is_array($data_k3) && count($data_k3) > 0): ?>
                                 <?php foreach ($data_k3 as $row): 
-                                    $label_kategori = 'Fisik';
-                                    if ($row['kategori'] === 'badge--danger') $label_kategori = 'Bahaya Tinggi';
-                                    elseif ($row['kategori'] === 'badge--info') $label_kategori = 'Logistik/Mekanis';
+                                    $label_kategori = 'Rendah';
+                                    if ($row['kategori'] === 'badge--danger') $label_kategori = 'Tinggi';
+                                    elseif ($row['kategori'] === 'badge--warning') $label_kategori = 'Sedang';
                                 ?>
                                 <tr>
-                                    <td class="py-3 px-4 fw-semibold align-middle"><?= htmlspecialchars($row['lokasi']) ?></td>
-                                    <td class="py-3 px-4 align-middle"><?= htmlspecialchars($row['sumber_bahaya']) ?></td>
-                                    <td class="py-3 px-4 align-middle text-center"><span class="badge <?= htmlspecialchars($row['kategori']) ?> badge--soft-shadow"><?= $label_kategori ?></span></td>
-                                    <td class="py-3 px-4 align-middle text-muted"><?= htmlspecialchars($row['tindakan_pencegahan']) ?></td>
+                                    <td class="py-3 px-4 fw-semibold align-middle"><?= htmlspecialchars($row['lokasi'], ENT_QUOTES, 'UTF-8', false) ?></td>
+                                    <td class="py-3 px-4 align-middle"><?= htmlspecialchars($row['sumber_bahaya'], ENT_QUOTES, 'UTF-8', false) ?></td>
+                                    <td class="py-3 px-4 align-middle text-center" style="text-align: center !important;"><span class="badge <?= htmlspecialchars($row['kategori']) ?> badge--soft-shadow"><?= $label_kategori ?></span></td>
+                                    <td class="py-3 px-4 align-middle text-muted"><?= htmlspecialchars($row['tindakan_pencegahan'], ENT_QUOTES, 'UTF-8', false) ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>

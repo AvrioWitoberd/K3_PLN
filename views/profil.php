@@ -11,20 +11,19 @@ if (!isset($cms)) {
     <main class="container page-layout">
         
         <section class="profile-section">
-            <div class="section-header text-center">
-                <span class="section-label">Profil Korporat & Landasan Berpikir</span>
-                <h1 class="section-title"><?= htmlspecialchars($cms['profil_title'] ?? 'Profil K3 Perusahaan') ?></h1>
-                <p class="section-desc max-w-2xl mx-auto">
-                    <?= htmlspecialchars($cms['profil_description'] ?? 'Kinerja K3 merupakan tulang punggung operasional korporat.') ?>
-                </p>
+            <div class="page-heading-elegant">
+                <span class="badge">Profil Korporat & Landasan Berpikir</span>
+                <h1><?= htmlspecialchars($cms['profil_title'] ?? 'Profil K3 Perusahaan') ?></h1>
+                <p>Kinerja Kesehatan dan Keselamatan Kerja (K3) merupakan pilar utama sekaligus tulang punggung keberhasilan operasional perusahaan.</p>
             </div>
         </section>
 
         <section class="law-section mb-6">
-            <div class="card card--floating">
-                <div class="card__header d-flex align-items-center gap-3 border-bottom pb-3 mb-4">
-                    <div class="icon-box bg-blue-light text-primary"><i class="ri-scales-3-fill"></i></div>
-                    <h3 class="card__title m-0">Landasan Hukum K3 Dasar</h3>
+            <div class="card card--floating table-wrapper">
+                <div class="card__header bg-blue-grad text-white px-4 py-3 border-0">
+                    <h3 class="m-0 fs-5 font-weight-bold d-flex align-items-center gap-2">
+                        <i class="ri-scales-3-fill"></i> Landasan Hukum K3 Dasar
+                    </h3>
                 </div>
                 <div class="card__body">
                     <ul class="law-list list-unstyled">
@@ -51,16 +50,17 @@ if (!isset($cms)) {
 
         <section class="org-structure mt-5">
             <div class="card card--floating">
-                <div class="card__header text-center pb-2">
-                    <div class="icon-box icon-box--large bg-orange-light text-warning mx-auto mb-3"><i class="ri-organization-chart"></i></div>
-                    <h2 class="card__title">Struktur Organisasi PT PLN</h2>
-                    <p class="text-muted mt-2">
+                <div class="card__header px-4 py-3">
+                    <h3 class="m-0 fs-5 font-weight-bold d-flex align-items-center gap-2">
+                        <i class="ri-organization-chart"></i> Struktur Organisasi PT PLN
+                    </h3>
+                </div>
+                <div class="card__body text-center mt-2">
+                    <p class="text-muted mb-4 px-md-5">
                         Bagan hierarki komando pengendalian operasional yang menempatkan Divisi Kesehatan, Keselamatan Kerja, Keamanan & Lingkungan (K4) sebagai perpanjangan tangan strategis Direktur Utama.
                     </p>
-                </div>
-                <div class="card__body text-center mt-4">
                     <div class="img-wrapper shadow-soft rounded-xl overflow-hidden border">
-                        <img src="assets/images/struktur-organisasi-pln.png" alt="Struktur Organisasi PT PLN" class="map-responsive w-100">
+                        <img src="assets/images/struktur-organisasi-pln.jpeg" alt="Struktur Organisasi PT PLN" class="map-responsive w-100">
                     </div>
                 </div>
             </div>

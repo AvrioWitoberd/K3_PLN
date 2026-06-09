@@ -59,4 +59,67 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==========================================
+    // DARK MODE TOGGLE
+    // ==========================================
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+    
+    if (themeToggle) {
+        // Cek preferensi lokal sebelumnya
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (themeIcon) {
+                themeIcon.classList.remove('ri-moon-line');
+                themeIcon.classList.add('ri-sun-line');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            let theme = 'light';
+            
+            if (document.documentElement.classList.contains('dark-mode')) {
+                theme = 'dark';
+                if (themeIcon) {
+                    themeIcon.classList.remove('ri-moon-line');
+                    themeIcon.classList.add('ri-sun-line');
+                }
+            } else {
+                if (themeIcon) {
+                    themeIcon.classList.remove('ri-sun-line');
+                    themeIcon.classList.add('ri-moon-line');
+                }
+            }
+            localStorage.setItem('theme', theme);
+        });
+    }
+
+    // ==========================================
+    // LIVE STATS COUNTER ANIMATION
+    // ==========================================
+    const counters = document.querySelectorAll('.stat-card-premium h3');
+    counters.forEach(counter => {
+        // Only animate if it's purely a number
+        const targetText = counter.innerText;
+        const targetNum = parseInt(targetText.replace(/\D/g, ''));
+        
+        if (!isNaN(targetNum) && targetNum > 0 && targetText.includes('+') === false && targetText.includes('%') === false) {
+            let count = 0;
+            const updateCount = () => {
+                const inc = targetNum / 50; // speed
+                if (count < targetNum) {
+                    count += inc;
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 30);
+                } else {
+                    counter.innerText = targetText;
+                }
+            };
+            updateCount();
+        }
+    });
+
 });

@@ -45,7 +45,7 @@ $status_text = $total_tinggi > 0 ? 'Perlu Pemantauan' : 'Terkendali';
 ?>
 <!-- Ringkasan Eksekutif Panel -->
 <!-- Ringkasan Eksekutif Panel -->
-<div class="card border-0 shadow-soft rounded-xl mb-5 executive-summary-card" style="background-color: <?= $total_tinggi > 0 ? '#fef2f2' : '#f0fdf4' ?>; position: relative; overflow: hidden; transform: translateY(0); transition: all 0.3s ease;">
+<div class="card mb-5 executive-summary-card" style="background-color: <?= $total_tinggi > 0 ? '#fef2f2' : '#f0fdf4' ?>; position: relative; overflow: hidden; transform: translateY(0); transition: all 0.3s ease;">
     <div style="position: absolute; left: 0; top: 0; width: 8px; height: 100%; background-color: <?= $total_tinggi > 0 ? '#ef4444' : '#10b981' ?>;"></div>
     <div class="card__body p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4" style="padding-left: 2rem !important; padding-right: 2rem !important;">
         <div>
@@ -99,8 +99,8 @@ $status_text = $total_tinggi > 0 ? 'Perlu Pemantauan' : 'Terkendali';
 </div>
 
 <!-- Activity Log -->
-<div class="card border-0 shadow-sm rounded-lg overflow-hidden bg-white">
-    <div class="card__header bg-white border-bottom px-4 py-3 d-flex justify-content-between align-items-center">
+<div class="card overflow-hidden">
+    <div class="card__header px-4 py-3 d-flex justify-content-between align-items-center">
         <h3 class="m-0 fs-6 font-weight-bold d-flex align-items-center gap-2 text-dark">
             <i class="ri-history-line text-primary"></i> Aktivitas Terbaru Sistem
         </h3>

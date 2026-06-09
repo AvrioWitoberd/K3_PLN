@@ -1,8 +1,8 @@
     <footer class="footer">
         <div class="container footer__grid">
             <div class="footer__brand">
-                <h3><i class="ri-flash-light-fill text-gradient"></i> SIM K3 PLN</h3>
-                <p>Sistem Informasi Manajemen Keselamatan dan Kesehatan Kerja untuk tugas mata kuliah K3.</p>
+                <h3><i class="ri-flash-light-fill text-gradient pulse-anim"></i> SIM K3 PLN</h3>
+                <p>Sistem Manajemen Keselamatan dan Kesehatan Kerja terintegrasi untuk mewujudkan Zero Accident.</p>
             </div>
             <div class="footer__team">
                 <h4><i class="ri-team-line"></i> Tim Penyusun</h4>
@@ -19,9 +19,15 @@
             </div>
         </div>
         <div class="container footer__bottom">
-            <p>&copy; 2026 SIM K3 PLN. Dibuat untuk keperluan akademik.</p>
+            <p>&copy; 2026 SIM K3 PLN. Premium Corporate UI Project.</p>
         </div>
     </footer>
+
+    <!-- Floating Emergency Button -->
+    <a href="#" class="floating-emergency" title="Kontak Darurat K3">
+        <i class="ri-alarm-warning-fill"></i>
+        <span class="emergency-text">DARURAT</span>
+    </a>
 
     <script src="assets/js/main.js"></script>
 </body>

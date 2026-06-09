@@ -13,10 +13,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
 </head>
 <body>
     
-    <header class="header">
+    <!-- Glassmorphism applied via css (header-glass) -->
+    <header class="header header-glass">
         <div class="container header__inner">
             <a href="index.php" class="logo">
-                <i class="ri-flash-light-fill logo__icon"></i> SIM K3 PLN
+                <i class="ri-flash-light-fill logo__icon pulse-anim"></i> SIM K3 PLN
             </a>
             <nav class="nav">
                 <ul class="nav__list">
@@ -24,15 +25,20 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <li><a href="profil.php" class="nav__link <?= ($current_page == 'profil.php') ? 'active' : '' ?>">Profil & Regulasi</a></li>
                     <li><a href="identifikasi.php" class="nav__link <?= ($current_page == 'identifikasi.php') ? 'active' : '' ?>">Identifikasi Bahaya</a></li>
                     <li><a href="safety-map.php" class="nav__link <?= ($current_page == 'safety-map.php') ? 'active' : '' ?>">Peta & Rambu</a></li>
+                    <li>
+                        <button id="theme-toggle" class="btn btn--flat theme-switch" aria-label="Toggle Dark Mode">
+                            <i class="ri-moon-line"></i>
+                        </button>
+                    </li>
                     <li class="nav__item--btn">
-                        <a href="login.php" class="btn btn--primary">
+                        <a href="login.php" class="btn btn--primary btn--shadow">
                             <i class="ri-admin-line"></i> Login Petugas
                         </a>
                     </li>
                 </ul>
             </nav>
             <button class="menu-toggle" aria-label="Toggle Menu">
-                <span></span><span></span><span></span>
+                <i class="ri-menu-line"></i>
             </button>
         </div>
     </header>

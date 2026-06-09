@@ -1,8 +1,8 @@
 <?php require_once __DIR__ . '/includes/header.php'; ?>
 
-<main class="page-layout bg-light" style="padding-top: 100px;">
+<main class="page-layout">
     <article class="container mb-5" style="max-width: 800px;">
-        <div class="card border-0 shadow-sm rounded-lg overflow-hidden bg-white">
+        <div class="card overflow-hidden">
             
             <?php if(!empty($artikel['gambar_cover'])): ?>
                 <div style="width: 100%; height: 400px; background: #e2e8f0; border-bottom: 1px solid #f1f5f9;">

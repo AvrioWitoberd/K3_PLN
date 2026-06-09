@@ -20,7 +20,7 @@ $base_path = isset($base_path) ? $base_path : '';
     <header class="header">
         <div class="container header__inner">
             <a href="<?= $base_path ?>index.php" class="logo">
-                <i class="ri-flash-light-fill logo__icon"></i> SIM K3 PLN
+                <i class="ri-flash-light-fill logo__icon"></i> Portal Keselamatan Kerja PLN
             </a>
             <nav class="nav">
                 <ul class="nav__list">
@@ -31,8 +31,13 @@ $base_path = isset($base_path) ? $base_path : '';
                     <li><a href="<?= $base_path ?>artikel.php" class="nav__link <?= ($current_page == 'artikel.php' || $current_page == 'detail-artikel.php') ? 'active' : '' ?>">Edukasi K3</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="ri-menu-line"></i>
-            </button>
+            <div class="header__actions" style="display: flex; align-items: center; gap: 1rem;">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Ganti Tema Warna">
+                    <i class="ri-moon-line"></i>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </header>

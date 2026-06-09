@@ -48,7 +48,7 @@
 </div>
 
 <section class="data-section">
-    <div class="card border-0 shadow-sm rounded-lg bg-white overflow-hidden">
+    <div class="card overflow-hidden">
         
         <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light" style="background:#f8fafc!important;">
             <h3 class="m-0 fs-6 font-weight-bold d-flex align-items-center gap-2 text-dark">
