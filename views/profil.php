@@ -60,7 +60,7 @@ if (!isset($cms)) {
                         Bagan hierarki komando pengendalian operasional yang menempatkan Divisi Kesehatan, Keselamatan Kerja, Keamanan & Lingkungan (K4) sebagai perpanjangan tangan strategis Direktur Utama.
                     </p>
                     <div class="img-wrapper shadow-soft rounded-xl overflow-hidden border">
-                        <img src="assets/images/struktur-organisasi-pln.jpeg" alt="Struktur Organisasi PT PLN" class="map-responsive w-100">
+                        <img src="assets/images/struktur-organisasi-pln.png" alt="Struktur Organisasi PT PLN" class="map-responsive w-100">
                     </div>
                 </div>
             </div>
