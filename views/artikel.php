@@ -28,7 +28,7 @@
                             <h3 style="font-size: 1.25rem; font-weight:700; line-height: 1.4; margin-bottom: 0.75rem;">
                                 <a href="detail-artikel.php?slug=<?= htmlspecialchars($row['slug']) ?>" class="card-article-title"><?= htmlspecialchars($row['judul']) ?></a>
                             </h3>
-                            <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6; margin-bottom:1.5rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                            <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6; margin-bottom:1.5rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-align: justify;">
                                 <?= htmlspecialchars(strip_tags(substr($row['konten'], 0, 150))) ?>...
                             </p>
                             <div style="margin-top: auto;">

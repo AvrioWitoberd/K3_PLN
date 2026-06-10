@@ -38,10 +38,10 @@
                                     elseif ($row['kategori'] === 'badge--warning') $label_kategori = 'Sedang';
                                 ?>
                                 <tr>
-                                    <td class="py-3 px-4 fw-semibold align-middle"><?= htmlspecialchars($row['lokasi'], ENT_QUOTES, 'UTF-8', false) ?></td>
-                                    <td class="py-3 px-4 align-middle"><?= htmlspecialchars($row['sumber_bahaya'], ENT_QUOTES, 'UTF-8', false) ?></td>
+                                    <td class="py-3 px-4 fw-semibold align-middle" style="text-align: left;"><?= htmlspecialchars($row['lokasi'], ENT_QUOTES, 'UTF-8', false) ?></td>
+                                    <td class="py-3 px-4 align-middle" style="text-align: left;"><?= htmlspecialchars($row['sumber_bahaya'], ENT_QUOTES, 'UTF-8', false) ?></td>
                                     <td class="py-3 px-4 align-middle text-center" style="text-align: center !important;"><span class="badge <?= htmlspecialchars($row['kategori']) ?> badge--soft-shadow"><?= $label_kategori ?></span></td>
-                                    <td class="py-3 px-4 align-middle text-muted"><?= htmlspecialchars($row['tindakan_pencegahan'], ENT_QUOTES, 'UTF-8', false) ?></td>
+                                    <td class="py-3 px-4 align-middle text-muted" style="text-align: justify;"><?= htmlspecialchars($row['tindakan_pencegahan'], ENT_QUOTES, 'UTF-8', false) ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>

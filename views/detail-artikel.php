@@ -49,9 +49,10 @@
 </main>
 
 <style>
-.article-content p { margin-bottom: 1.5rem; }
+.article-content p { margin-bottom: 1.5rem; text-align: justify; }
 .article-content ul, .article-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
 .article-content li { margin-bottom: 0.5rem; }
+.article-content { text-align: justify; }
 </style>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

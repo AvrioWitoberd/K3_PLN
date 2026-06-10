@@ -56,7 +56,7 @@ if (!isset($cms)) {
                     </h3>
                 </div>
                 <div class="card__body text-center mt-2">
-                    <p class="text-muted mb-4 px-md-5">
+                    <p class="text-muted mb-4 px-md-5" style="text-align: justify;">
                         Bagan hierarki komando pengendalian operasional yang menempatkan Divisi Kesehatan, Keselamatan Kerja, Keamanan & Lingkungan (K4) sebagai perpanjangan tangan strategis Direktur Utama.
                     </p>
                     <div class="img-wrapper shadow-soft rounded-xl overflow-hidden border">

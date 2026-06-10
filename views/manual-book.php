@@ -172,6 +172,7 @@ $base_path = isset($base_path) ? $base_path : '';
             color: #0f172a;
             margin: 0 0 16px 0;
             line-height: 1.2;
+            text-align: center;
         }
         .manual-hero p {
             font-size: 1.1rem;
@@ -312,7 +313,7 @@ $base_path = isset($base_path) ? $base_path : '';
         /* Stats & Badges */
         .stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
         .stat-chip {
-            padding: 8px 16px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; flex: 1; min-width: 200px;
+            padding: 8px 16px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; flex: 1; min-width: 200px; text-align: center;
         }
         .stat-chip.target { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
         .stat-chip.wajib { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
@@ -506,6 +507,12 @@ $base_path = isset($base_path) ? $base_path : '';
             /* Blocks and backgrounds */
             .manual-hero {
                 page-break-inside: avoid;
+            }
+            /* Reduce hero h1 size on print so it fits in one line */
+            .manual-hero h1 {
+                font-size: 2.7rem !important;
+                white-space: nowrap !important;
+                text-align: center !important;
             }
             #section-panduan, #section-fab {
                 page-break-before: always;
@@ -746,7 +753,7 @@ $base_path = isset($base_path) ? $base_path : '';
                                             <tr>
                                                 <th>Zona Lokasi</th>
                                                 <th>Pemicu Bahaya</th>
-                                                <th>Skala</th>
+                                                <th style="text-align: center;">Skala</th>
                                                 <th>Solusi Protektif</th>
                                             </tr>
                                         </thead>
@@ -754,19 +761,19 @@ $base_path = isset($base_path) ? $base_path : '';
                                             <tr>
                                                 <td>Gudang Material</td>
                                                 <td>Forklift, tumpukan material</td>
-                                                <td><span class="badge rendah">RENDAH</span></td>
+                                                <td style="text-align: center;"><span class="badge rendah">RENDAH</span></td>
                                                 <td>Jalur pedestrian, sepatu safety</td>
                                             </tr>
                                             <tr>
                                                 <td>Ruang Mesin (Turbin)</td>
                                                 <td>Mesin berputar, kebisingan</td>
-                                                <td><span class="badge sedang">SEDANG</span></td>
+                                                <td style="text-align: center;"><span class="badge sedang">SEDANG</span></td>
                                                 <td>Ear Muff, Safety Glasses</td>
                                             </tr>
                                             <tr>
                                                 <td>Menara Transmisi</td>
                                                 <td>Ketinggian (>1,8 m)</td>
-                                                <td><span class="badge tinggi">TINGGI</span></td>
+                                                <td style="text-align: center;"><span class="badge tinggi">TINGGI</span></td>
                                                 <td>Full body harness, double lanyard</td>
                                             </tr>
                                         </tbody>
