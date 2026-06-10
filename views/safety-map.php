@@ -8,7 +8,7 @@
             <p>Infrastruktur pemetaan zonasi bahaya secara makro, dilengkapi dengan panduan katalog 13 set Rambu K3 Internasional yang berstandar SNI.</p>
         </section>
 
-        <section class="map-showcase mb-6">
+        <section class="map-showcase mb-4">
             <div class="card card--floating">
                 <div class="card__header px-4 py-3 d-flex align-items-center justify-content-between">
                     <h2 class="m-0 fs-5 font-weight-bold d-flex align-items-center gap-2">
@@ -27,7 +27,7 @@
             </div>
         </section>
 
-        <section class="signs-section mt-5">
+        <section class="signs-section">
             <div class="card card--floating table-wrapper mt-4">
                 <div class="card__header bg-blue-grad text-white px-4 py-3 border-0">
                     <h3 class="m-0 fs-5 font-weight-bold d-flex align-items-center gap-2">
@@ -38,10 +38,10 @@
                     <table class="table table-striped table-hover signs-table m-0">
                         <thead class="bg-light">
                             <tr>
-                                <th class="text-center py-3" style="width: 60px; text-align: center !important;">No</th>
-                                <th class="py-3">Kategori Rambu</th>
-                                <th class="text-center py-3" style="text-align: center !important;">Klasifikasi</th>
-                                <th class="py-3">Definisi Operasional</th>
+                                <th class="text-center py-3" style="width: 60px; text-align: center !important;">NO</th>
+                                <th class="py-3"><i class="ri-flag-line text-primary me-1"></i> Kategori Rambu</th>
+                                <th class="text-center py-3" style="text-align: center !important;"><i class="ri-price-tag-3-line text-warning me-1"></i> Klasifikasi</th>
+                                <th class="py-3"><i class="ri-file-info-line text-success me-1"></i> Definisi Operasional</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -24,10 +24,10 @@
                     <table class="table table-hover table-striped risk-table m-0">
                         <thead class="bg-light">
                             <tr>
-                                <th class="py-3 px-4 text-dark"><i class="ri-map-pin-user-line text-primary"></i> Zona Lokasi</th>
-                                <th class="py-3 px-4 text-dark"><i class="ri-thunderstorms-line text-primary"></i> Pemicu/Sumber Bahaya</th>
-                                <th class="py-3 px-4 text-dark text-center"><i class="ri-error-warning-line text-warning"></i> Skala Bahaya</th>
-                                <th class="py-3 px-4 text-dark"><i class="ri-shield-cross-line text-success"></i> Solusi Protektif & APD</th>
+                                <th class="py-3 px-4 text-dark" style="white-space: nowrap; min-width: 180px;"><i class="ri-map-pin-user-line text-primary"></i> Zona Lokasi</th>
+                                <th class="py-3 px-4 text-dark" style="white-space: nowrap; min-width: 260px;"><i class="ri-thunderstorms-line text-primary"></i> Pemicu / Sumber Bahaya</th>
+                                <th class="py-3 px-4 text-dark text-center" style="white-space: nowrap; min-width: 180px;"><i class="ri-error-warning-line text-warning"></i> Skala Bahaya</th>
+                                <th class="py-3 px-4 text-dark" style="white-space: nowrap; min-width: 300px;"><i class="ri-shield-cross-line text-success"></i> Solusi Protektif & APD</th>
                             </tr>
                         </thead>
                         <tbody>

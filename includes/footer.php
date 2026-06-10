@@ -23,6 +23,11 @@
         </div>
     </footer>
 
+    <!-- Floating Manual Book Button -->
+    <a href="manual-book.php" class="manual-bubble-btn" title="Buku Panduan Manual">
+        <i class="ri-book-read-line"></i>
+    </a>
+
     <!-- Floating Emergency Button -->
     <a href="#" class="floating-emergency" title="Kontak Darurat K3">
         <i class="ri-alarm-warning-fill"></i>

@@ -17,7 +17,10 @@
 
             <div class="p-4 p-md-5">
                 <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
-                    <a href="artikel.php" class="badge badge--soft border-0 m-0 px-3 py-2 text-decoration-none hover-primary" style="color:var(--pln-primary);"><i class="ri-arrow-left-line"></i> Kembali</a>
+                    <a href="artikel.php" class="btn-back-premium mb-0 mt-2">
+                        <div class="icon-wrapper"><i class="ri-arrow-left-line"></i></div>
+                        Kembali
+                    </a>
                     <span class="text-muted fs-7"><i class="ri-calendar-line text-primary"></i> Dipublikasikan pada <?= date('d F Y, H:i', strtotime($artikel['created_at'])) ?></span>
                 </div>
 

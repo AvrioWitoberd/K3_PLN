@@ -64,7 +64,7 @@ if (!isset($cms)) {
                     </div>
                     <div class="stat-content text-start position-relative z-10">
                         <h3 class="stat-value">0</h3>
-                        <p class="stat-label">Fatal Accident<br><span class="stat-sublabel">Di Seluruh Area Operasional</span></p>
+                        <p class="stat-label">Kecelakaan Fatal<br><span class="stat-sublabel">Di Seluruh Area Operasional</span></p>
                     </div>
                     <i class="ri-shield-check-fill stat-watermark"></i>
                 </div>

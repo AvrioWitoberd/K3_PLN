@@ -18,7 +18,7 @@ if (!isset($cms)) {
             </div>
         </section>
 
-        <section class="law-section mb-6">
+        <section class="law-section mb-4">
             <div class="card card--floating table-wrapper">
                 <div class="card__header bg-blue-grad text-white px-4 py-3 border-0">
                     <h3 class="m-0 fs-5 font-weight-bold d-flex align-items-center gap-2">
@@ -48,7 +48,7 @@ if (!isset($cms)) {
             </div>
         </section>
 
-        <section class="org-structure mt-5">
+        <section class="org-structure">
             <div class="card card--floating">
                 <div class="card__header px-4 py-3">
                     <h3 class="m-0 fs-5 font-weight-bold d-flex align-items-center gap-2">
