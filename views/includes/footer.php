@@ -57,9 +57,13 @@ if (!isset($cms)) {
     </footer>
 
     <!-- Floating Bubble Manual Book -->
-    <a href="#" target="_blank" class="manual-bubble-btn" title="Buka Manual Book Aplikasi">
-        <i class="ri-book-read-fill"></i>
-    </a>
+<!-- Floating Bubble Manual Book -->
+<a href="<?= isset($base_path) ? $base_path : '' ?>manual-book.php"
+   class="manual-bubble-btn"
+   title="Buka Manual Book">
+
+    <i class="ri-book-read-fill"></i>
+</a>
 
     <!-- Floating Bubble Data Diri -->
     <div class="team-bubble-btn" id="teamBubbleBtn" title="Lihat Data Tim Penyusun">
